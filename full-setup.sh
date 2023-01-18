@@ -1,9 +1,6 @@
 #!/bin/sh
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
-fi
+if [ "$(id -u)" -ne 0 ]; then echo "Please run as root." >&2; exit 1; fi
 
 echo "Installing Python and WiringPi"
 ./python-install.sh
